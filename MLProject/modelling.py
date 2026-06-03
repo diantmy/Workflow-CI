@@ -17,10 +17,6 @@ from sklearn.metrics import (
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# MLflow Configuration
-mlflow.set_tracking_uri("sqlite:///mlflow.db")
-mlflow.set_experiment("Telco_Churn_RF")
-
 # Load Dataset
 df = pd.read_csv("telco_preprocessed.csv")
 
@@ -50,10 +46,10 @@ precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
 
-# Logging Parameter
+# Log Parameter
 mlflow.log_param("random_state", 42)
 
-# Logging Metrics
+# Log Metrics
 mlflow.log_metric("accuracy", accuracy)
 mlflow.log_metric("precision", precision)
 mlflow.log_metric("recall", recall)
